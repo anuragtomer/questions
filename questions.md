@@ -118,7 +118,7 @@ https://leetcode.com/problems/beautiful-arrangement-ii/
 
 10. Given an array `sum`, and 2 sums `sumA` and `sumB`, return 2 equal length arrays `A` and `B` consisting of only
     `0, 1` such that total sum of each array is equal to `sumA` and `sumB` respectively and `A[i]` + `B[i]` = `sum[i]`  
-{TODO: Find out url of this question.}
+    https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix/
     - Follow up: What if instead of filling up with just 0, 1, you could fill with numbers `1 to k`?
 
     <details>
@@ -127,6 +127,7 @@ https://leetcode.com/problems/beautiful-arrangement-ii/
     - At each index `i`, if `sum[i] == 2`, fill up `1` in both arrays `A` and `B`, and reduce `sumA` and `sumB` by 1.
     - If `sum[i] == 0`, fill up `0` in both arrays `A` and `B`.
     - if `sum[i] == 1`, fill up `1` in the array which has higher remaining sum.
+    - at the end, check if sumA and sumB is zero.
 
     - TODO: Work out follow up question solution.
     
