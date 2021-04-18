@@ -300,7 +300,7 @@ https://leetcode.com/problems/spiral-matrix/
 
     </details>
 
-2. Given a binary tree, return the boundary of the tree in anti-clockwise direction starting from root.  
+20. Given a binary tree, return the boundary of the tree in anti-clockwise direction starting from root.  
 https://leetcode.com/problems/boundary-of-binary-tree/  
 https://www.lintcode.com/problem/boundary-of-binary-tree/  
 
@@ -311,5 +311,58 @@ https://www.lintcode.com/problem/boundary-of-binary-tree/
     - Find left nodes of the tree(top-down), then leaves(left-right), and then right(bottom-up).
     - When traversing left nodes, if some node does not have a left node, go to its right.
     - When traversing right nodes, if some node does not have a right node, go it its left.
+    
+    </details>
+
+21. Given an integer `n` representing the total number of bits in the code, return any sequence of gray code of `n` bits.  
+https://leetcode.com/problems/gray-code/
+
+    <details>
+        <summary>Quick Summary</summary>
+        
+    - Trick question.
+    - Observe the pattern: For 1 bit, the result is `[0, 1]`. For 2 bits, the result is `[00, 01, 11, 10]`, viz. 
+      `[0 + [0, 1], 1 + reverse([0, 1])]`. For 3 bits, the result is `[000, 001, 011, 010, 110, 111, 101, 100]`, viz.,
+      `[0 + [output of gray(2), 1 + reverse(gray(2)]`.
+    - In effect, the recursive solution is find the gray code of n-1 bits. Push grey(n-1) to result. Then push `2^n + 
+      reverse(gray(n-1))` to result.
+    - Base condition is `gray(1) = [0, 1]`.
+    
+    </details>
+
+22. You are given coordinates of n stones on a 2D plane. A stone can be removed if it shares either the same row or 
+    same column as another stone. Return the maximum number of stones that can be removed.  
+https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/  
+
+    <details>
+        <summary>Quick Summary</summary>
+        
+    - Problem fits into template union-find algorithm.
+    - We call a connected graph as an island.
+    - One island must have at least one stone left.
+    - The maximum stones can be removed = `total stones - total islands`.
+    - Trick to treat 2D coordinates as a point in 1D plane:
+        - Question has given that maximum value of coordinate can be 10000. So, treat `y` coordinate as point beyond 10000.
+        - So, `x` coordinate is as is. But `y` coordinate is `11000(some no greater than 10000) + y`.
+    - Now, link each x with its corresponding y, using `union-find` algorithm.
+    - At the end, return `no_of_stones - no_of_connected_components`.
+    
+    </details>
+
+23. You are given an array of `obstacles` of length `n+1`, where each obstacle ranges between 0-3,  
+    0 - There is no obstacle  
+    1,2,3 - There is obstacle on ith row.
+    The frog starts in lane 2. Return the minimum no of side jumps the frog needs, to reach any lane at point `n`.  
+https://leetcode.com/problems/minimum-sideway-jumps/
+
+    <details>
+        <summary>Quick Summary</summary>
+        
+    - DP question.
+    - Maintain a `min_jump` counter for each row, begin with {1, 0, 1}.
+    - For each entry in obstacles array, check the following:
+        - if kth row has obstacle, set `min_jump[k] = inf`
+        - For each point which does not have obstacle, update `min_jump[i] = min(min_jump[i], min(min_jump[i+1], min_jump[i+2]) + 1)`
+    - Return min of `min_jump`.
     
     </details>
