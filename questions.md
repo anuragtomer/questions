@@ -67,7 +67,6 @@ https://leetcode.com/problems/next-permutation/
     
 6. Given 2 strings, find the minimum no of deletions you need to make such that resulting strings are same.  
 https://leetcode.com/problems/delete-operation-for-two-strings/
-
     <details>
         <summary>Quick Solution</summary>
     
@@ -136,7 +135,6 @@ https://leetcode.com/problems/beautiful-arrangement-ii/
 11. Given an array of non-negative integers `nums`, each element in the array represents your maximum jump length at 
     that position. Determine if you can reach the end of the array.  
 https://leetcode.com/problems/jump-game/
-    
     <details>
         <summary>Quick Solution</summary>
         
@@ -161,12 +159,11 @@ https://leetcode.com/problems/jump-game/
           jump position. I'm now forced to take a jump. Set `no-of-jumps++`, and `currentFarthest = farthest`.
     - Return `no-of-jumps`.
      
-     </summary>
+     </details>
 
 12. Given a coordinate `(sr, sc)` representing the starting pixel (row and column) of the flood fill, and a pixel value 
     `newColor`, "flood fill" the image.  
 https://leetcode.com/problems/flood-fill/
-
     <details>
         <summary>Quick Solution</summary>
         
@@ -177,7 +174,6 @@ https://leetcode.com/problems/flood-fill/
 
 13. Given a string `s`, find the length of the longest substring without repeating chars.  
 https://leetcode.com/problems/longest-substring-without-repeating-characters/
-
     <details>
         <summary>Quick Solution</summary>
     
@@ -193,7 +189,6 @@ https://leetcode.com/problems/longest-substring-without-repeating-characters/
 14. Given an integer array `nums`, find the contiguous subarray (containing at least one number) which has the largest
     sum and return its sum.  
 https://leetcode.com/problems/maximum-subarray/
-
     <details>
         <summary>Quick Summary</summary>
         
@@ -202,7 +197,7 @@ https://leetcode.com/problems/maximum-subarray/
     - For each element, either the maximum sum subarray starts from this location, or it extends the current running max sum subarray.
       i.e. `may-be-longest = max(num[i], may-be-longest + num[i])`
     - This new `may-be-longest` can be the maximum sum subarray. `actual-longest = max(may-be-longest, actual-longest)`
-    
+
     </details>
 
 15. Implement the Trie class:  
@@ -213,7 +208,6 @@ https://leetcode.com/problems/maximum-subarray/
     - `boolean startsWith(String prefix)` Returns true if there is a previously inserted string word that has the 
       prefix prefix, and false otherwise.  
 https://leetcode.com/problems/implement-trie-prefix-tree/
-
     <details>
         <summary>Quick Summary</summary>
         
@@ -229,7 +223,6 @@ https://leetcode.com/problems/implement-trie-prefix-tree/
 16. Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should 
     be set to `NULL`.  
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
-
     <details>
         <summary>Quick Summary</summary>
         
@@ -251,7 +244,6 @@ https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
 
 17. Find median of running stream of numbers.  
 https://leetcode.com/problems/find-median-from-data-stream/
-
     <details>
         <summary>Quick Summary</summary>
         
@@ -270,7 +262,6 @@ https://leetcode.com/problems/find-median-from-data-stream/
 
 18. Given the root of a binary tree, determine if it is a valid binary search tree.  
 https://leetcode.com/problems/validate-binary-search-tree/  
-
     <details>
         <summary>Quick Summary</summary>
         
@@ -285,7 +276,6 @@ https://leetcode.com/problems/validate-binary-search-tree/
 
 19. Given an `m X n` matrix, return all the elements of the matrix in spiral order.  
 https://leetcode.com/problems/spiral-matrix/  
-
     <details>
         <summary>Quick Summary</summary>
         
@@ -303,7 +293,6 @@ https://leetcode.com/problems/spiral-matrix/
 20. Given a binary tree, return the boundary of the tree in anti-clockwise direction starting from root.  
 https://leetcode.com/problems/boundary-of-binary-tree/  
 https://www.lintcode.com/problem/boundary-of-binary-tree/  
-
     <details>
         <summary>Quick Summary</summary>
         
@@ -316,7 +305,6 @@ https://www.lintcode.com/problem/boundary-of-binary-tree/
 
 21. Given an integer `n` representing the total number of bits in the code, return any sequence of gray code of `n` bits.  
 https://leetcode.com/problems/gray-code/
-
     <details>
         <summary>Quick Summary</summary>
         
@@ -330,10 +318,9 @@ https://leetcode.com/problems/gray-code/
     
     </details>
 
-22. You are given coordinates of n stones on a 2D plane. A stone can be removed if it shares either the same row or 
+22. You are given coordinates of n stones on a 2D plane. A stone can be removed if it shares either the same row or  
     same column as another stone. Return the maximum number of stones that can be removed.  
 https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/  
-
     <details>
         <summary>Quick Summary</summary>
         
@@ -351,10 +338,9 @@ https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
 
 23. You are given an array of `obstacles` of length `n+1`, where each obstacle ranges between 0-3,  
     0 - There is no obstacle  
-    1,2,3 - There is obstacle on ith row.
+    1,2,3 - There is obstacle on ith row.  
     The frog starts in lane 2. Return the minimum no of side jumps the frog needs, to reach any lane at point `n`.  
 https://leetcode.com/problems/minimum-sideway-jumps/
-
     <details>
         <summary>Quick Summary</summary>
         
@@ -364,5 +350,50 @@ https://leetcode.com/problems/minimum-sideway-jumps/
         - if kth row has obstacle, set `min_jump[k] = inf`
         - For each point which does not have obstacle, update `min_jump[i] = min(min_jump[i], min(min_jump[i+1], min_jump[i+2]) + 1)`
     - Return min of `min_jump`.
+    
+    </details>
+
+24. Given an integer array `nums` and an integer `k`, return `true` if it is possible to divide this array into `k`  
+    non-empty subsets whose subs are all equal.  
+https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
+    <details>
+        <summary>Quick Summary</summary>
+        
+    - DP. Try all subsets linearly and see if you've found k subsets.
+    - NPC problem.
+    - Maintain a bool `picked` array and `subsetSum` array.
+    - For each unpicked num, mark it picked, push it to `subsetSum` array if possible(`subsetSub + num < targetsum`).  
+      Otherwise, try the same with next element after marking current element unpicked, and removing it from current `subsetSum` index.
+    - Recursively check if it is possible to push elements to some index of `subsetSum`.
+    - If it is possible, return `true`, else `false`.
+    
+    </details>
+
+25. You are given an array of `prerequisites` indicating which course must be taken before another. Return true if you  
+    can take all the courses.  
+https://leetcode.com/problems/course-schedule/  
+    <details>
+        <summary>Quick Summary</summary>
+        
+    - Basically, topological sorting question.
+    - Create a dependency graph. And traverse it in dfs manner. If there is a loop, return false, else return true.
+    
+    </details>
+
+26. You are given a vector of nums denoting type of fruit, and 2 baskets. You have to return what is the maximum no  
+    of fruits you can pick, subjected to following conditions:
+    - Each bucket can have only one type of fruit.
+    - Once you start picking, you cannot skip over some index i, and pick some index j, for some j > i.  
+https://leetcode.com/problems/fruit-into-baskets/  
+    <details>
+        <summary>Quick Summary</summary>
+        
+    - 2 pointer problem
+    - Maintain a map (type_of_fruit->count) for each type of fruit you've picked.
+    - Maintain a pointer j denoting the last element which is removed from map, inited to -1.
+    - For each ith num in nums array, if the size of map > 2, keep incrementing j, and decrement the count of type of fruit an num[j].
+    - If the count is 0, remove it from map. Push this new ith fruit in your map.
+    - At each step, keep track of maxLength (i-j).
+    - return maxLength.
     
     </details>
