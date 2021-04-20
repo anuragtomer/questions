@@ -397,3 +397,55 @@ https://leetcode.com/problems/fruit-into-baskets/
     - return maxLength.
     
     </details>
+
+27. You are given an integer array `nums`, and 2 players. Game starts with player 1. Each player can picks one element 
+    from either beginning or end, adds the number to its sum. Player with higher sum wins. Return whether player 1 can
+    win the game or not.  
+https://leetcode.com/problems/predict-the-winner/  
+    <details>
+        <summary>Quick Summary</summary>
+        
+    - Min-max problem
+    - At each decision, try 2 paths for A. Either pick from beginning and see if you win. Or pick from last and see 
+      if you win.
+    - For B, try to win via both paths. Pick from beginning and try to win. And pick from end and try to win.
+    - After each pick, let other player pick.
+    - DP solution:
+        - `dp(i, j) = max(nums[i] - dp(i+1, j), nums[j] - dp[i[j-1])`
+        - Intuition is, you are adding `nums[i](or nums[j])` but will be losing out on `dp(i+1, j) (or dp[i][j-1])`.
+        - return `dp[0][size] >= 0` if you want to find out if player 1 won., `dp[1][size] >= 0` if player 2 won.
+    </details>
+
+28. Given a string `s` containing only '`(`', '`)`' and '`*`'(can be treated as one '`(`' , '`)`' or empty string), return `true`   
+    if `s` is valid.  
+https://leetcode.com/problems/valid-parenthesis-string/  
+    <details>
+        <summary>Quick Summary</summary>
+        
+    - Try considering all * as close parenthesis, see if you close less than you open. If not, return false.
+    - If 1 passes, from end of string, try considering all * as open parenthesis, and see if you have less close than 
+      open. Return false if not.
+    - Return true if you passed 2.  
+      
+    Another solution:
+    - Maintain a range of minimum-maximum open parenthesis.
+    - Lower limit of `minCount = 0` for following ops:
+    - Do the following:
+        - For each open parenthesis, increase `maxCount`, `minCount`.
+        - For each close parenthesis, decrease `maxCount`, `minCount`.
+        - For each *, increase `maxCount`, decrease `minCount`.
+        - If at any point, `maxCount < 0`, return `false`.
+    </details>
+
+29. You are given a `pattern`, and a set of words. For each word in set of words, return `true`, if you can fit in characters  
+    in `pattern`, and make it equal to word, subjected to condition that you cannot fit caps characters in `pattern`.  
+https://leetcode.com/problems/camelcase-matching/  
+    <details>
+        <summary>Quick Summary</summary>
+        
+    - Greedy approach
+    - For each char in word, if it matches currentChar of pattern, go ahead.
+    - If current char in word is a caps char, but it does not match the current char of pattern, return false.
+    - Do 2, 3 for each word.
+    
+    </details>
