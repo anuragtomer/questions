@@ -487,3 +487,48 @@ All the solution codes (in `C++`) can be accessed at appropriate difficulty fold
 
     </details>
 
+33. Given the `root` of a binary tree, return the maximum path sum of any path (need not include root).  
+<https://leetcode.com/problems/binary-tree-maximum-path-sum/>
+    <details>
+        <summary>Quick Summary</summary>
+
+    - Maintain 2 variables, one of which tell what is the max sum in left/right subtree. Another which tells what is the maximum path sum  
+      if you include root.
+    - Find the maximum path sum in left subtree.
+    - Find the maximum path sum in right subtree.
+    - Update both variables accordingly.
+    - `left = func(root->left, maxSum)`
+    - `right = func(root->right, maxSum)`
+    - `current = root->val + left + right`
+    - `maxSum = max(maxSum, current)`
+    - `maxSumPassingThroughRoot = root->val + max(left, right)`
+
+    </details>
+
+34. Given a linked list, return an array of next greater element corresponding to each node of the list.  
+    If there is not next greater element, return 0 for that element.  
+<https://leetcode.com/problems/next-greater-node-in-linked-list/>
+    <details>
+        <summary>Quick Summary</summary>
+
+    - Keep a stack to maintain for which nodes next_greater is yet to be found.
+    - If the current element is greater that the top of stack, pop elements from stack and set their next_greater to this current element.
+    - At the end, for each element in stack, set their max_greater to 0.
+
+    </details>
+
+35. A company is planning to interview 2n people. Given the array costs where `costs[i] = [aCosti, bCosti]`,  
+    the cost of flying the `ith` person to city `a` is `aCosti`, and the cost of flying the `ith` person to  
+    city `b` is `bCosti`.
+    Return the minimum cost to fly every person to a city such that exactly n people arrive in each city.  
+<https://leetcode.com/problems/two-city-scheduling/>
+    <details>
+        <summary>Quick Summary</summary>
+
+    - Greedy approach.
+    - Create a max heap of difference of cost of visiting city `A` and that of `B`. Idea is, if the cost of visiting one city is way greater than  
+      that of visiting other, we would want to ignore costlier city for this person.
+    - Now, pop elements from heap, and try assigning the city to this person where the cost is low. Keep track of how many people have been sent  
+      to city A vs city B. If you've already sent n people to one city, all the next people should be sent to other city.
+
+    </details>
