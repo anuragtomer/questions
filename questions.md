@@ -445,16 +445,18 @@ All the solution codes (in `C++`) can be accessed at appropriate difficulty fold
 
     </details>
 
-30. Given string num representing a non-negative integer `num`, and an integer `k`, return the smallest possible integer after removing k digits from `num`.  
+30. Given string num representing a non-negative integer `num`, and an integer `k`, return the smallest possible integer after removing k digits from  
+    `num`.  
 <https://leetcode.com/problems/remove-k-digits/>
     <details>
         <summary>Quick Summary</summary>
 
     - Traverse numbers from left to right, and look for a dip (num[i] < num[j], i > j).
     - Remove this number. Continue forward until you've removed k elements.
-    - Idea is, lets say given number is `xxxabxxxx`, if a < b, removing a doesn't make much sense because `xxxbxxxx` would be greater than `xxxaxxxx`,  
-      but this doesn't hold when a > b. Then it makes sense to remove `a` first.
-    - Also, if the number is `xabxxxcdx` and `a < b` and `c < d`, it makes sense to remove `a` before `c` because `xbxxcdx` would be smaller than `xabxxdx`.
+    - Idea is, lets say given number is `xxxabxxxx`, if a < b, removing a doesn't make much sense because `xxxbxxxx` would be greater than  
+      `xxxaxxxx`, but this doesn't hold when a > b. Then it makes sense to remove `a` first.
+    - Also, if the number is `xabxxxcdx` and `a < b` and `c < d`, it makes sense to remove `a` before `c` because `xbxxcdx` would be smaller  
+      than `xabxxdx`.
 
     </details>
 
@@ -466,13 +468,15 @@ All the solution codes (in `C++`) can be accessed at appropriate difficulty fold
     - If you maintain a prefix sum, its easy to see that `sum(ith index to jth index), sum[i,j] = sum(0, j) - sum(0, i-1)`.
     - So problem reduces to, once you've calculated prefix sum array, traverse over it to find all i, j such that  
       `sum(i, j) == targetSum`.
-    - Alternatively, you can also maintain a hash which tells how many times it has seen this sum till now, and maintain a running sum (which is nothing but sum[0, i-1]).
-    - In your hash, look for `sum - targetSum`, if it is present, add it to count. This is because from `1`, we identified want `sum(0, j) - sum(0, i-1) == targetSum`, and  
-      we saved `sum(0, i-1)` in our hash. So, we just check `sum(0, j) - targetSum` is there in hash or not.
+    - Alternatively, you can also maintain a hash which tells how many times it has seen this sum till now, and maintain a running sum (which is  
+      nothing but sum[0, i-1]).
+    - In your hash, look for `sum - targetSum`, if it is present, add it to count. This is because from `1`, we identified want `sum(0, j) - sum(0, i-1) == targetSum`,  
+      and we saved `sum(0, i-1)` in our hash. So, we just check `sum(0, j) - targetSum` is there in hash or not.
 
     </details>
 
-32. You are given 2 arrays, A and B, denoting dominos numbers. Find the minimum no of swaps between A(i) and B(i), such that either A has all same numbers, or B has all same numbers.  
+32. You are given 2 arrays, A and B, denoting dominos numbers. Find the minimum no of swaps between A(i) and B(i), such that either A has all  
+    same numbers, or B has all same numbers.  
 <https://leetcode.com/problems/minimum-domino-rotations-for-equal-row/>
     <details>
         <summary>Quick Summary</summary>
@@ -531,4 +535,36 @@ All the solution codes (in `C++`) can be accessed at appropriate difficulty fold
     - Now, pop elements from heap, and try assigning the city to this person where the cost is low. Keep track of how many people have been sent  
       to city A vs city B. If you've already sent n people to one city, all the next people should be sent to other city.
 
+    </details>
+
+36. Given a string `s` and an integer `k`. You should construct `k` non-empty palindrome strings using all the characters in `s`.  
+    Return `True` if you can use all the characters in `s` to construct `k` palindrome strings or `False` otherwise.  
+<https://leetcode.com/problems/construct-k-palindrome-strings/>  
+    <details>
+        <summary>Quick Summary</summary>
+
+    - Count the no of odd count characters.
+    - Check if they are less or equal to `k`.
+    </details>
+
+37. Given an integer array `nums` and two integers `k` and `t`, return `true` if there are two distinct indices `i` and `j` in the array such that  
+    `abs(nums[i] - nums[j]) <= t` and `abs(i - j) <= k`.  
+<https://leetcode.com/problems/contains-duplicate-iii/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Keep a `k` sized set(ordered).
+    - For each incoming number `num[i]`, remove the oldest element `(i - k - 1)` from the set when the set has more than `k` elements.
+    - Find the greatest smaller number than `nums[i] - t`.
+    - If the number in step `3` is within t distance of nums[i], return true. Otherwise put this number in set and continue.
+    </details>
+
+38. Given an integer array `flowerbed` containing `0's` and `1's`, where 0 means empty and 1 means not empty, and an integer `n`, return if `n`  
+    new flowers can be planted in the `flowerbed` such that no 2 flowers are adjacent when planted.  
+<https://leetcode.com/problems/can-place-flowers/>
+    <details>
+        <summary>Quick Summary</summary>
+
+    - For each index, check if neighbors have flower. If not, place it. Check for boundary conditions placements
+    - Continue doing so until you've placed `n` flowers. If you've reached the end of `flowerbed` without placing `n` flowers, return `false`.
     </details>
