@@ -568,3 +568,51 @@ All the solution codes (in `C++`) can be accessed at appropriate difficulty fold
     - For each index, check if neighbors have flower. If not, place it. Check for boundary conditions placements
     - Continue doing so until you've placed `n` flowers. If you've reached the end of `flowerbed` without placing `n` flowers, return `false`.
     </details>
+
+39. Given a string consisting of parenthesis and integers, denoting tree in pre-order, return a tree corresponding to the string.  
+<https://leetcode.com/problems/construct-binary-tree-from-string/>  
+<https://www.lintcode.com/problem/construct-binary-tree-from-string/>  
+    <details>
+        <summary>Quick Summary</summary>
+
+    - Read the string until you encounter '('.
+    - Create root with string encountered till now.
+    - In the remaining string, find the matching ')'. From this substring, create the left subtree of the   current root. (steps 1-4)
+    - From the remaining string, create the right subtree of the current root. (steps 1-4)
+    - Return the root.
+    </details>
+
+40. You have a browser of one tab where you start on the `homepage` and you can visit another `url`, get back in the history number of `steps` or move forward in the history number of `steps`.  
+Implement the BrowserHistory class:  
+
+    - `BrowserHistory(string homepage)` Initializes the object with the `homepage` of the browser.
+    - `void visit(string url)` Visits `url` from the current page. It clears up all the forward history.
+    - `string back(int steps)` Move `steps` back in history. If you can only return `x` steps in the history and `steps > x`, you will return only x steps. Return the current `url` after moving back in history at most `steps`.
+    - `string forward(int steps)` Move steps forward in history. If you can only forward `x` steps in the history and `steps > x`, you will forward only `x` steps. Return the current `url` after forwarding in history at most `steps`.  
+<https://leetcode.com/problems/design-browser-history/>  
+
+    <details>
+        <summary>Quick Summary</summary>
+
+    - Can be done with either 2 stacks or 1 list.
+    - For 2 stack solution, keep 2 stacks, `past` and `future`.
+    - In initialization, initialize `past` with incoming `url` and clear the `future`.
+    - In visit, initialize `past` with incoming `url` and clear `future`.
+    - In back, pop from `back` and push it to `future`. Make sure you never empty the past stack. Return the top of the stack.
+    - In forward, pop from `future` and push it to `back`. Return top of `back` stack.
+
+    </details>
+
+41. Given an `m x n` binary matrix filled with `0's` and `1's`, find the largest square containing only `1's` and return its area.  
+<https://leetcode.com/problems/maximal-square/>  
+    <details>
+        <summary>Quick Summary</summary>
+
+    - DP problem
+    - Initialize a matrix `dp` such that dp[i][j] = 1 iff matrix[i][j] = '1'.
+    - For each i, j of matrix, do the following:
+        - if (matrix[i][j] == '1'), then
+            - dp[i][j] = 1 + min(value above, value before, and value left-diagonally up.).
+            - Also, keep track of max value across all dp[i][j]
+    - Return square of max_value.
+    </details>
