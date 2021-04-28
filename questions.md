@@ -616,3 +616,58 @@ Implement the BrowserHistory class:
             - Also, keep track of max value across all dp[i][j]
     - Return square of max_value.
     </details>
+
+42. Given two strings `word1` and `word2`, return the minimum number of operations required to convert `word1` to `word2`.  
+You have the following three operations permitted on a word:  
+
+    - Insert a character
+    - Delete a character
+    - Replace a character  
+<https://leetcode.com/problems/edit-distance/>  
+    <details>
+        <summary>Quick Summary</summary>
+
+    - DP question.
+    - Create a 2D matrix to keep track what is the number of insertion/deletion/replacement one needs to make to make `word1[0..i]` and `word2[0..j]` same.
+    - For each `word1[i]` and `word2[j]`, check if they are equal, If they are, then `dp[i][j] = dp[i-1][j-1]`.
+    - Else, `dp[i][j] = 1 + min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1])`
+    - Return `dp[word1size][word2size]`
+    </details>
+
+43. Write 2 functions, one that takes a tree root and converts it into a string, and another which takes in a string and returns an equivalent tree.  
+<https://leetcode.com/problems/serialize-and-deserialize-binary-tree/>
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Do level order traversal for both.
+    - To serialize the tree, do level order traversal and add value of each node to string. If there is no node, add 'null'(or some null marker) corresponding to it.
+    - `to_string(root->val) + ',' + serialize(root->left) + ',' + serialize(root->right)`
+    - To deserialize the string to tree, again, for each non-null marker in the string, create a node corresponding to it.
+    - Add left and right from the remaining of the string.
+    - `if (data[0] == NullMarker) then`
+        - `if there is more data beyond this nullmarker, set data = data beyond this nullmarker`
+            - `return nullptr`
+        - `else`
+            - `TreeNode* node = new TreeNode(getNextNumberAndUpdateData);`
+            - `node->left = deserialize(data);`
+            - `node->right = deserialize(data);`
+            - `return node`
+    </details>
+
+44. Given an integer array `nums`, and an integer `k`, return `k`th largest element in the array. Array can have repeated entries.  
+<https://leetcode.com/problems/kth-largest-element-in-an-array/>  
+Follow up: Given an `n x n` matrix where each of the rows and columns are sorted in ascending order, return the `k`th smallest element in the matrix.  
+<https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Keep a `k` sized min heap.
+    - Return top element after pushing every input num.
+    - Follow up:
+        - Create a heap with first element of each row.
+        - Now, while you've not poped off `k` elements, do the following:
+            - Pop off the top from heap.
+            - Push the next element from the same row which that element belonged to.
+        - Complexity would be `nlog(n) + klog(n)`. We push first element of each row in heap. Heap creation takes `log(n)` + Pop operation is `O(1)`, rearranging after removal takes `log(n)` time, and we do this `k` times.
+
+    </details>
