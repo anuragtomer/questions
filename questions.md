@@ -671,3 +671,43 @@ Follow up: Given an `n x n` matrix where each of the rows and columns are sorted
         - Complexity would be `nlog(n) + klog(n)`. We push first element of each row in heap. Heap creation takes `log(n)` + Pop operation is `O(1)`, rearranging after removal takes `log(n)` time, and we do this `k` times.
 
     </details>
+
+45. Given three integers `x`, `y`, and `bound`, return a list of all the powerful integers that have a value less than or equal to `bound`.  
+    An integer is powerful if it can be represented as `xi + yj` for some integers `i >= 0` and `j >= 0`.  
+<https://leetcode.com/problems/powerful-integers/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Brute force.
+    - Keep a set for result.
+    - For all powers of `x` that are less than `bound`, loop over all powers of `y` such that `power_of_x + power_of_y < bound`.
+    - Push such `power_of_x + power_of_y` in set.
+    - Pay special attention if either x or y is 1. Break loop in that case after pushing first value.
+    - Once done, put result from set to a vector.
+
+    </details>
+
+46. Given an `m x n` matrix. If an element is 0, set its entire row and column to 0. Do it in-place, in constant space.  
+<https://leetcode.com/problems/set-matrix-zeroes/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Check first column and first row. If they have 0, keep a marker that you've to set first row/column to 0.
+    - Traverse the whole matrix, except first row/first column.
+    - If you find some 0, set a 0 in first row and first column corresponding to this position.
+    - Again traverse each element of first row. If some value is 0, set all elements of that column to 0. Ignore 1'st column from this.
+    - Do the same for first column. If some value is 0, set all the elements of that row to 0. Ignore 1st row from this.
+    - Check your markers that you kept in first step and set 1st row/column to 0 based on those.
+    </details>
+
+47. Given an `m x n` integers matrix, return the length of the longest increasing path in matrix.  
+<https://leetcode.com/problems/longest-increasing-path-in-a-matrix/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - DFS.
+    - For each point in matrix, check if you can go to any increasing path from this point.
+    - If so, go ahead and keep track of length.
+    - Once you reach a dead end, backtrack and update length of longest path from that point.
+    - Return the longest path length.
+    </details>
