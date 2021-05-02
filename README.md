@@ -1,4 +1,4 @@
-# questions
+# Questions
 
 This contains a list of leetcode/lintcode questions that we discussed.  
 It also contains a small summary of how to solve that question.  
