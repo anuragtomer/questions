@@ -711,3 +711,44 @@ Follow up: Given an `n x n` matrix where each of the rows and columns are sorted
     - Once you reach a dead end, backtrack and update length of longest path from that point.
     - Return the longest path length.
     </details>
+
+48. Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.  
+<https://leetcode.com/problems/find-all-anagrams-in-a-string/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Keep a hash with counts of each char in p.
+    - For each char in s, if that char is in p's hash, increment count in s's hash.
+    - Compare if they are same. If they are, put current `index - p.size()` in result vector.
+    - If current index is greater than `p.size()`, decrement count of char at `index - p.size()` from s's hash  
+      (if that char was also there in p's hash).
+    </details>
+
+49. Given the root of a binary tree, the depth of each node is the shortest distance to the root.  
+Return the smallest subtree such that it contains all the deepest nodes in the original tree.  
+<https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Check the max left depth, check the max right depth.
+    - If they are same, then return this node.
+    - Otherwise, return the node returned by the side which had lower depth.
+    </details>
+
+50. Given a directed acyclic graph (DAG) of n nodes labeled from 0 to n - 1, find all possible paths from node 0 to node n - 1, and return them in any order.  
+    The graph is given as follows:  
+    `graph[i]` is a list of all nodes you can visit from node i (i.e., there is a directed edge from node i to node `graph[i][j]`).  
+<https://leetcode.com/problems/all-paths-from-source-to-target/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Mark 0th node as `current_node`, node being `visited`.
+    - Push current node to `current_path`.
+    - For each neighbor of `current_node`, mark it as being `visited`, and set it as current node.
+    - Pop the `current_node` from `current_path`, and mark `current_node` is `not_visited`.
+    - Repeat `step 2, 3` until you reach last node.
+    - If you reach last node, push this `current_path` to result.
+    - If you reach a already `visited` node, return.
+    - Go back and do `step 4` and continue for all neighbors.
+
+    </details>
