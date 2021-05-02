@@ -1,6 +1,6 @@
 # Questions discussed
 
-Continuation from questions_1.md.  
+Continuation from [questions_1.md](https://github.com/anuragtomer/questions/blob/main/questions_1.md).  
 All the solution codes (in `C++`) can be accessed at appropriate difficulty folder [here](https://github.com/anuragtomer/practice_coding/tree/master/leetcode)
 
 1. Given a binary array nums, return the maximum length of a contiguous subarray with an equal number of 0 and 1.  
