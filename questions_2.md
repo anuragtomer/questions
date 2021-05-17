@@ -178,3 +178,47 @@ All the solution codes (in `C++`) can be accessed at appropriate difficulty fold
     - As soon as you see smaller height histogram, pop it off.
     - Update `maxArea` to be this poped `height *` (length of the histogram which had this height), i.e. `height * (current_index - 1 - index_of_current_top_of_histogram)`.
     </details>
+
+13. Given a set of `n` people (numbered 1, 2, ..., n), we would like to split everyone into two groups of any size.  
+    Each person may dislike some other people, and they should not go into the same group.  
+    Formally, if `dislikes[i] = [a, b]`, it means it is not allowed to put the people numbered `a` and `b` into the same group.  
+    Return true if and only if it is possible to split everyone into two groups in this way.  
+<https://leetcode.com/problems/possible-bipartition/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Idea is to assign one person to group A, and its neighbors to group B in DFS manner. At any point, if group is violated, return false, otherwise return true.
+    - Create a neighbors map, and maintain a hash telling what is the group this person belongs to.
+    - For each person, do a dfs for its neighbors with group `true`.
+    - For each person, if it is not there in hash, add it to hash. and check for its neighbors with other group.
+    - If person is there in hash, check if the group matches. If not, return false.
+    </details>
+
+14. You are given an array `nums` that consists of non-negative integers. Let us define rev(x) as the reverse of the non-negative integer x. For example, rev(123) = 321, and rev(120) = 21. A pair of indices (i, j) is nice if it satisfies all of the following conditions:
+
+    - `0 <= i < j < nums.length`
+    - `nums[i] + rev(nums[j]) == nums[j] + rev(nums[i])`
+    Return the number of nice pairs of indices. Since that number can be too large, return it modulo `10^9 + 7`.
+<https://leetcode.com/problems/count-nice-pairs-in-an-array/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - The condition can be rearranged to `(nums[i] - rev(nums[i])) == (nums[j] - rev(nums[j]))`.
+    - Transform each `nums[i]` into `(nums[i] - rev(nums[i]))`.
+    - Keep a map storing the frequencies of values that you have seen so far. For each i, check if `nums[i]` is in the map. If it is, then add that count to the overall count. Then, increment the frequency of `nums[i]`.
+    </details>
+
+15. There are `n` gas stations along a circular route, where the amount of gas at the `ith` station is `gas[i]`.  
+    You have a car with an unlimited gas tank and it costs `cost[i]` of gas to travel from the `ith` station to its next `(i + 1)th` station. You begin the journey with an empty tank at one of the gas stations.  
+    Given two integer arrays `gas` and `cost`, return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return `-1`. If there exists a solution, it is *guaranteed* to be *unique*.  
+<https://leetcode.com/problems/gas-station/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Assume that you start from last gas station, and end at 0th station.
+    - Update `fuel = gas[start] - cost[start]`.
+    - Do the following till start > end:
+        - If you have enough fuel (`fuel >= 0`), update `fuel` to include `end`'s `gas` and `cost`, and increase `end` by one.
+        - If you don't have enough `fuel`, start 1 earlier, and update `fuel` accordingly.
+    - Return `start` if `fuel >= 0`, else `-1`.
+    </details>
