@@ -12,7 +12,7 @@ All the solution codes (in `C++`) can be accessed at appropriate difficulty fold
     - For each incoming 0, decrease your sum, and for each incoming 1, increase your sum.
     - For each sum, check if you've seen this previously. If so, calculate the max length from current index to first time this sum was seen.
     - If this is a new sum, save it in hash.
-    - Idea is, if we reached at some sum x, and after few ups and down, I again see x, that means
+    - Idea is, if we reached at some sum x, and after few ups and down, I again see x, that means the values between those indices would sum to 0.
     </details>
 
 2. Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers.  
@@ -36,4 +36,145 @@ All the solution codes (in `C++`) can be accessed at appropriate difficulty fold
 
     - Flip the image upside down.
     - Transpose the image about diagonal.
+    </details>
+
+4. Given a string `s` and a dictionary of strings `wordDict`, return `true` if `s` can be segmented into a space-separated sequence of one or more dictionary words.  
+<https://leetcode.com/problems/word-break/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - DP
+    - Create a bool vector that denotes till what index, the substring is possible to make using words in `wordDict`.
+    - Mark `0th` index to `true`, as base condition.
+    - Loop `i` through the length of the string.
+    - Now, for each possible substring starting at index `j` and ending at `i`, `j < i`, check if it is present in wordDict. If it is, mark `i`th `dp` to `true` and try finding for `i+1`th index.
+    </details>
+
+5. Given a list of daily temperatures `T`, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put `0` instead.  
+<https://leetcode.com/problems/daily-temperatures/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Stack based question.
+    - In stack, keep track of decreasing temperatures.
+    - If there is a temperature on stack that is less than the current temperature, put difference in their indices in result vector corresponding stack temperature.
+    </details>
+
+6. You are given an array of integers `stones` where `stones[i]` is the weight of the `ith` stone.  
+    We are playing a game with the stones. On each turn, we choose any two stones and smash them together. Suppose the stones have weights `x` and `y` with `x <= y`. The result of this smash is:  
+
+    - If `x == y`, both stones are destroyed, and
+    - If `x != y`, the stone of weight `x` is destroyed, and the stone of weight `y` has new weight `y - x`.  
+    At the end of the game, there is *at most one* stone left.  
+
+    Return the smallest possible weight of the left stone. If there are no stones left, return `0`.  
+<https://leetcode.com/problems/last-stone-weight-ii/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - DP question.
+    - The problem boils down to dividing set of stones in two groups such that their difference is minimum.
+    - `TotalSum = Sum_of_group_1 + Sum_of_group_2`
+    - `Difference = Sum_of_group_1 - Sum_of_group_2`
+    - We want to `minimize(Difference)`
+    - `TotalSum - Difference = 2 * Sum_of_group_2`
+    - To `minimize(Difference)`, do `maximize(TotalSum - 2 * sum_of_group_2)`
+    - PseudoCode:
+        - Mark all possible sums using stones.
+        - Find the highest possible `sum <= totalSum/2`, and return `totalSum - 2 * sum`
+    </details>
+
+7. In a deck of cards, each card has an integer written on it.  
+    Return true if and only if you can choose X >= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:  
+    - Each group has exactly X cards.  
+    - All the cards in each group have the same integer.  
+<https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Math problem
+    - Find the counts of each integer.
+    - Find gcd of all the counts.
+    - If gcd == 1, return false, else return true.
+    </details>
+
+8. Implement the RandomizedSet class:  
+    - RandomizedSet() Initializes the RandomizedSet object.
+    - bool insert(int val) Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
+    - bool remove(int val) Removes an item val from the set if present. Returns true if the item was present, false otherwise.
+    - int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
+<https://leetcode.com/problems/insert-delete-getrandom-o1/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Keep a hash that maps value to its index, and a vector of nums.
+    - Insertion
+        - Push into vector and place last index in hash corresponding to number being inserted.
+    - Removal
+        - Find the location of current num using hash.
+        - Swap it with last element in the vector.
+        - Pop last element from vector, remove the element from hash.
+    - getRandom
+        - Get a random index
+        - return the num from vector at that index.
+    </details>
+
+9. Given a binary tree with the following rules:  
+    - `root.val == 0`
+    - If `treeNode.val == x` and `treeNode.left != null`, then `treeNode.left.val == 2 * x + 1`
+    - If `treeNode.val == x` and `treeNode.right != null`, then treeNode.`right.val == 2 * x + 2`  
+    Now the binary tree is contaminated, which means all `treeNode.val` have been changed to `-1`.
+
+    You need to first recover the binary tree and then implement the `FindElements` class:
+    - `FindElements(TreeNode* root)` Initializes the object with a contaminated binary tree, you need to recover it first.
+    - `bool find(int target)` Return if the `target` value exists in the recovered binary tree.  
+<https://leetcode.com/problems/find-elements-in-a-contaminated-binary-tree/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - To recover the tree, do a level order traversal, and keep updating values of left and right child as per given conditions.
+    - Also, push each value seen till now in a set.
+    - To find, return if that value is there in set.
+    </details>
+
+10. You are given an integer array `nums` and an integer `x`. In one operation, you can either remove the leftmost or the rightmost element from the array `nums` and subtract its value from `x`. Note that this modifies the array for future operations.  
+    Return the *minimum number* of operations to reduce `x` to *exactly* `0` if it's possible, otherwise, return `-1`.  
+<https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Indirect way of asking maximize the contiguous array which has `sum = totalSum - x`.
+    - Maintain a prefix-sum `hash` containing what is the `index`, this `sum` was seen.
+    - Init `hash` with `0 = -1`, sum `0` was last seen at `-1th` index, meaning I should not take any element to make a sum 0.
+    - If `current_sum - x` is seen before, update `maxLen` using `current_index` - index saved for `current_sum - x`
+    - Put `current_index` for `current_sum` in `hash`.
+    - If the numbers are non-negative, another solution can be 2 pointer solution, using the same approach, maximize `totalSum - target`.
+        - Keep 2 pointers, `i` and `j`.
+        - If `current_sum < totalSum - target`, add `nums_at_j` to `current_sum`.
+        - Now, while `current_sum >= totalSum - target`, remove elements from beginning (`nums_at_i`). Also, if `current_sum == totalSum - target`, update `maxLen`.
+    </details>
+
+11. Given a characters array tasks, representing the tasks a CPU needs to do, where each letter represents a different task. Tasks could be done in any order. Each task is done in one unit of time. For each unit of time, the CPU could complete either one task or just be idle.  
+    However, there is a non-negative integer n that represents the cooldown period between two same tasks (the same letter in the array), that is that there must be at least n units of time between any two same tasks.  
+    Return the least number of units of times that the CPU will take to finish all the given tasks.  
+<https://leetcode.com/problems/task-scheduler/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Find out each task's frequency.
+    - Also, find out what is the highest frequency.
+    - Set `temporary_result` to `(highest_frequency - 1) * (n + 1)`. This means that just to accommodate the most frequent word, I would take up above specified space if I were to interleave `n` slots.
+    - Now, if there were more tasks with same highest frequency, they would be placed immediately after the slots occupied by task in step 3. So we increase the `temporary_result` by 1 for each of same frequency task.
+    - `temporary_result` is your minimum CPU time. But there can be a lot of less frequent tasks. So, those would have to be accommodated in between empty slots, or beyond `temporary_result` if there can't be accommodated in between. So, result would be `min(tasks.size(), temporary_result)`.
+    </details>
+
+12. Given an array of integers `heights` representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.  
+<https://leetcode.com/problems/largest-rectangle-in-histogram/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    - Stack problem.
+    - Maintain a stack that keeps all the increasing height histograms.
+    - As soon as you see smaller height histogram, pop it off.
+    - Update `maxArea` to be this poped `height *` (length of the histogram which had this height), i.e. `height * (current_index - 1 - index_of_current_top_of_histogram)`.
     </details>
