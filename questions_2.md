@@ -222,3 +222,199 @@ All the solution codes (in `C++`) can be accessed at appropriate difficulty fold
         - If you don't have enough `fuel`, start 1 earlier, and update `fuel` accordingly.
     - Return `start` if `fuel >= 0`, else `-1`.
     </details>
+
+16. Given the array orders, which represents the orders that customers have done in a restaurant, i.e., `orders[i]=[customerNamei,tableNumberi,foodItemi]` where `customerNamei` is the name of the customer, `tableNumberi` is the table customer sit at, and `foodItemi` is the item customer orders.  
+Return the restaurant's "display table". The "display table" is a table whose row entries denote how many of each food item each table ordered. The first column is the table number and the remaining columns correspond to each food item in alphabetical order. The first row should be a header whose first column is "Table", followed by the names of the food items. Note that the customer names are not part of the table. Additionally, the rows should be sorted in numerically increasing order.  
+<https://leetcode.com/problems/display-table-of-food-orders-in-a-restaurant/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+17. You are given an `m x n` integer matrix `heights` representing the height of each unit cell in a continent. The Pacific ocean touches the continent's left and top edges, and the Atlantic ocean touches the continent's right and bottom edges.  
+Water can only flow in four directions: up, down, left, and right. Water flows from a cell to an adjacent one with an equal or lower height.  
+Return a list of grid coordinates where water can flow to both the Pacific and Atlantic oceans.  
+<https://leetcode.com/problems/pacific-atlantic-water-flow/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+18. Your country has an infinite number of lakes. Initially, all the lakes are empty, but when it rains over the nth lake, the nth lake becomes full of water. If it rains over a lake which is full of water, there will be a flood. Your goal is to avoid the flood in any lake.  
+Given an integer array rains where:  
+
+    1. `rains[i] > 0` means there will be rains over the `rains[i]` lake.  
+    2. `rains[i] == 0` means there are no rains this day and you can choose one lake this day and dry it.  
+
+    Return an array ans where:  
+    1. `ans.length == rains.length`  
+    2. `ans[i] == -1` if `rains[i] > 0`.  
+    3. `ans[i]` is the lake you choose to dry in the ith day if `rains[i] == 0`.  
+  If there are multiple valid answers return any of them. If it is impossible to avoid flood return an empty array.  
+<https://leetcode.com/problems/avoid-flood-in-the-city/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+19. Given an array `nums` with n integers, your task is to check if it could become non-decreasing by modifying at most one element.  
+We define an array is non-decreasing if `nums[i] <= nums[i + 1]` holds for every i (0-based) such that `(0 <= i <= n - 2)`.  
+<https://leetcode.com/problems/non-decreasing-array/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+20. Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.  
+<https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+21. You are given an integer array `nums` with no duplicates. A maximum binary tree can be built recursively from `nums` using the following algorithm:  
+
+    1. Create a `root` node whose value is the maximum value in `nums`.  
+    2. Recursively build the left subtree on the subarray prefix to the left of the maximum value.  
+    3. Recursively build the right subtree on the subarray suffix to the right of the maximum value.  
+Return the maximum binary tree built from `nums`.  
+<https://leetcode.com/problems/maximum-binary-tree/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+22. You are given an array of words where each word consists of lowercase English letters.  
+`wordA` is a predecessor of `wordB` if and only if we can insert exactly one letter anywhere in `wordA` without changing the order of the other characters to make it equal to `wordB`.  
+A word chain is a sequence of words `[word1, word2, ..., wordk]` with `k >= 1`, where `word1` is a predecessor of `word2`, `word2` is a predecessor of `word3`, and so on. A single word is trivially a word chain with `k == 1`.  
+Return the length of the longest possible word chain with words chosen from the given list of `words`.  
+<https://leetcode.com/problems/longest-string-chain/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+23. You are given an integer array heights representing the heights of buildings, some bricks, and some ladders.  
+
+    1. If the current building's height is greater than or equal to the next building's height, you do not need a ladder or bricks.  
+    2. If the current building's height is less than the next building's height, you can either use one ladder or `(h[i+1] - h[i])` bricks.  
+Return the furthest building you can reach using given bricks and ladders.  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+24. There are n ice cream bars. You are given an array `costs` of length n, where `costs[i]` is the price of the `ith` ice cream bar in `coins`. The boy initially has `coins` coins to spend, and he wants to buy as many ice cream bars as possible.  
+Return the maximum number of ice cream bars the boy can buy with `coins` coins.  
+<https://leetcode.com/problems/maximum-ice-cream-bars/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+25. Given an unsorted array nums, reorder it in-place such that `nums[0] <= nums[1] >= nums[2] <= nums[3]....`  
+<https://www.lintcode.com/problem/508/>  
+<https://www.leetcode.com/problems/wiggle-sort/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+26. Given a string s, return the longest palindromic substring in s.  
+<https://leetcode.com/problems/longest-palindromic-substring/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+27. Given a string s containing only digits, return the number of ways to decode it.  
+<https://leetcode.com/problems/decode-ways/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+28. Given an array of words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.  
+
+    1. Pack as many words as you can in each line.  
+    2. Extra spaces should be distributed as evenly as possible.  
+<https://leetcode.com/problems/text-justification/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+29. Given a string s, check if the letters can be rearranged so that two characters that are adjacent to each other are not the same.  
+If possible, output any possible result.  If not possible, return the empty string.  
+<https://leetcode.com/problems/reorganize-string/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+30. The API: `int read4(char *buf)` reads 4 characters at a time from a file.  
+The return value is the actual number of characters read. For example, it returns 3 if there is only 3 characters left in the file.  
+By using the `read4` API, implement the function `int read(char *buf, int n)` that reads n characters from the file.  
+<https://www.lintcode.com/problem/660/>  
+<https://www.leetcode.com/problems/read-n-characters-given-read4-ii-call-multiple-times/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+31. Check whether the original sequence `org` can be uniquely reconstructed from the sequences in `seqs`. The `org` sequence is a permutation of the integers from 1 to n. Reconstruction means building a shortest common supersequence of the sequences in `seqs` (i.e., a shortest sequence so that all sequences in `seqs` are subsequences of it). Determine whether there is only one sequence that can be reconstructed from `seqs` and it is the `org` sequence.  
+<https://www.lintcode.com/problem/605/>  
+<https://leetcode.com/problems/sequence-reconstruction/>
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+32. Given an array and a number k, find the largest sum of the subarray containing at least k numbers. It may be assumed that the size of array is at-least k.  
+<https://practice.geeksforgeeks.org/problems/largest-sum-subarray-of-size-at-least-k3121/1/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+33. Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*' where:  
+    1. '?' Matches any single character.  
+    2. '*' Matches any sequence of characters (including the empty sequence).  
+The matching should cover the entire input string (not partial).  
+<https://leetcode.com/problems/wildcard-matching/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
+
+34. You are given n​​​​​​ tasks labeled from 0 to n - 1 represented by a 2D integer array tasks, where tasks[i] = [enqueueTimei, processingTimei] means that the i​​​​​​th​​​​ task will be available to process at enqueueTimei and will take processingTimei to finish processing.  
+You have a single-threaded CPU that can process at most one task at a time and will act in the following way:  
+    1. If the CPU is idle and there are no available tasks to process, the CPU remains idle.  
+    2. If the CPU is idle and there are available tasks, the CPU will choose the one with the shortest processing time. If multiple tasks have the same shortest processing time, it will choose the task with the smallest index.  
+    3. Once a task is started, the CPU will process the entire task without stopping.  
+    4. The CPU can finish a task then start a new one instantly.  
+Return the order in which the CPU will process the tasks.  
+<https://leetcode.com/problems/single-threaded-cpu/>  
+    <details>
+    <summary>Quick Summary</summary>
+
+    -
+    </details>
